@@ -33,3 +33,34 @@ For running this on my development computer I use this command:
 [example3]: examples/example3.png
 [device1]: examples/example-device1.jpeg
 [device2]: examples/example-device2.jpeg
+
+
+---
+
+## Solution so far
+
+Thank you to your help I find this solution:
+
+```python
+class ZLabel(Label):
+    image_scaled = ListProperty([])
+    scale_factor = NumericProperty(1.0)
+    base_font_size = NumericProperty(dp(20))  
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.font_size = self.base_font_size
+        self.bind(image_scaled=self._update_scale)
+
+    def _update_scale(self, *args):
+        if self.image_scaled:
+            ref_width = dp(340) 
+            ref_height = dp(272)
+
+            scale_w = self.image_scaled[0] / ref_width
+            scale_h = self.image_scaled[1] / ref_height
+            self.scale_factor = min(scale_w, scale_h)
+
+            self.font_size = self.base_font_size * self.scale_factor
+```
+
