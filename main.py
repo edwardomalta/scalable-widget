@@ -18,25 +18,10 @@ BoxLayout:
     spacing: dp(8)
     orientation: "vertical"
     ItemLog:
-    #ItemLog:
-<CLabel>:
-    #font_size: sp(12)
-    #size_hint_y: None
-    #height: self.texture_size[1] + dp(3)
-    canvas.before:
-        Color:
-            rgba: 0, 0, 0, 0.5
-        RoundedRectangle:
-            pos: self.x - dp(2), self.y - dp(2)
-            size: self.size
-            radius: [dp(5),]
-        Color:
-            rgba: 0, 0, 1, 1
-        RoundedRectangle:
-            pos: self.pos
-            size: self.size
-<BLabel@Label>:
-    font_size: sp(12)
+    ItemLog:
+
+<BLabel@ZLabel>:
+    base_font_size: sp(12)
     size_hint_y: None
     height: self.texture_size[1] + dp(3)
     canvas.before:
@@ -51,9 +36,8 @@ BoxLayout:
         RoundedRectangle:
             pos: self.pos
             size: self.size
-#<ZLabel>:
-    #font_size: dp(9)
-<TLabel@Label>:
+
+<TLabel@ZLabel>:
     size_hint_y: None
     height: self.texture_size[1] + dp(3)
 
@@ -76,30 +60,37 @@ BoxLayout:
             Widget:
             TLabel:
                 text: "TITLE LABEL"
-                font_size: sp(20)
+                base_font_size: sp(20)
+                image_scaled: bg_image.norm_image_size
             TLabel:
                 text: "Subtitle"
-                font_size: sp(14)
+                base_font_size: sp(14)
+                image_scaled: bg_image.norm_image_size
             TLabel:
                 text: "Date time: 07/07/2025 14:30"
-                font_size: sp(12)
+                base_font_size: sp(12)
+                image_scaled: bg_image.norm_image_size
             Widget:
         GridLayout:
             cols: 2
             padding: dp(15)
             spacing: dp(5)
-            CLabel:
+            BLabel:
                 text: "Name"
-            CLabel:
+                image_scaled: bg_image.norm_image_size
+            BLabel:
                 text: "14. Geographic Z A"
-            CLabel:
+                image_scaled: bg_image.norm_image_size
+            BLabel:
                 text: "Zone"
-            CLabel:
+                image_scaled: bg_image.norm_image_size
+            BLabel:
                 text: "New area Z"
-            ZLabel:
+                image_scaled: bg_image.norm_image_size
+            BLabel:
                 text: "User Name"
                 image_scaled: bg_image.norm_image_size
-            ZLabel:
+            BLabel:
                 text: "Jonh Frutz"
                 image_scaled: bg_image.norm_image_size
 
