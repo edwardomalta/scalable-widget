@@ -108,7 +108,7 @@ BoxLayout:
 class ZLabel(Label):
     image_scaled = ListProperty([])
     scale_factor = NumericProperty(1.0)
-    base_font_size = NumericProperty(dp(20))  # Guardamos el original
+    base_font_size = NumericProperty(dp(20))  
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -117,26 +117,14 @@ class ZLabel(Label):
 
     def _update_scale(self, *args):
         if self.image_scaled:
-            # Evitamos división por cero
             ref_width = dp(340) 
             ref_height = dp(272)
 
-            # test start
-            print(f"DEBUG UNIDADES:")
-            print(f"  Densidad pantalla: {Metrics.density}")
-            print(f"  image_scaled[0]: {self.image_scaled[0]}")
-            print(f"  image_scaled[1]: {self.image_scaled[1]}")
-            print(f"  ref_width: {ref_width}")
-            print(f"  ref_height: {ref_height}")
-            # test end
             scale_w = self.image_scaled[0] / ref_width
-            print(scale_w)
             scale_h = self.image_scaled[1] / ref_height
-            print(scale_h)
             self.scale_factor = min(scale_w, scale_h)
 
             self.font_size = self.base_font_size * self.scale_factor
-            print(f"[ZLabel] Escalado aplicado: {self.scale_factor:.2f} → FontSize: {self.font_size:.2f}")
 
 class CLabel(Label):
     min_font_size = NumericProperty(5)
